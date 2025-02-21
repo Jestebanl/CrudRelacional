@@ -18,6 +18,6 @@ public class TareaController {
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("tareas", tareaService.listarTareas());
-        return "tareas/index";
+        return "tarea/index";
     }
 }
