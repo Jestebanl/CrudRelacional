@@ -36,7 +36,9 @@ public class TareaAdminController {
     }
 
     @PostMapping
-    public String guardarTarea(@ModelAttribute Tarea tarea) {
+    public String guardarTarea(@ModelAttribute Tarea tarea, Long idProyecto) {
+        Proyecto proyecto = proyectoService.obtenerProyectoPorId(tarea.getProyecto().getId());
+        tarea.setProyecto(proyecto);
         tareaService.agregarTarea(tarea);
         return "redirect:/user/tareas";
     }
@@ -51,7 +53,9 @@ public class TareaAdminController {
     }
 
     @PostMapping("/actualizar/{id}")
-    public String actualizarTarea(@PathVariable Long id, @ModelAttribute Tarea tarea) {
+    public String actualizarTarea(@PathVariable Long id, @ModelAttribute Tarea tarea, Long idProyecto) {
+        Proyecto proyecto = proyectoService.obtenerProyectoPorId(tarea.getProyecto().getId());
+        tarea.setProyecto(proyecto);
         tareaService.modificarTarea(id, tarea);
         return "redirect:/user/tareas";
     }

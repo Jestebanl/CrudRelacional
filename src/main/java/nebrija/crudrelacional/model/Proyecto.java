@@ -1,6 +1,6 @@
 package nebrija.crudrelacional.model;
 
-import java.time.LocalDate;
+import java.sql.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -24,7 +24,7 @@ public class Proyecto {
     private String descripcion;
 
     @Column(name = "fecha_inicio", nullable = false)
-    private LocalDate fechaInicio;
+    private Date fechaInicio;
 
     @Enumerated(EnumType.STRING)    // Esto asegura que se guarden los nombres del enum como cadenas
     @Column(name = "estado", nullable = false, columnDefinition = "ENUM('Activo', 'En_Progreso', 'Finalizado')")
@@ -33,7 +33,7 @@ public class Proyecto {
     public Proyecto() {
     }
 
-    public Proyecto(String nombre, String descripcion, LocalDate fechaInicio, EstadoProyecto estado) {
+    public Proyecto(String nombre, String descripcion, Date fechaInicio, EstadoProyecto estado) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
@@ -64,11 +64,11 @@ public class Proyecto {
         this.descripcion = descripcion;
     }
 
-    public LocalDate getFechaInicio() {
+    public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
+    public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 

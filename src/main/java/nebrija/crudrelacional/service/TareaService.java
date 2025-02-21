@@ -39,7 +39,9 @@ public class TareaService {
         Tarea tarea = obtenerTareaPorId(id);
         tarea.setTitulo(tareaActualizado.getTitulo());
         tarea.setDescripcion(tareaActualizado.getDescripcion());
+        tarea.setFechaLimite(tareaActualizado.getFechaLimite());
         tarea.setEstado(tareaActualizado.getEstado());
+        tarea.setProyecto(tareaActualizado.getProyecto());
         tareaRepository.save(tarea);
     }
 

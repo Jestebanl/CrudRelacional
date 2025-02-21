@@ -38,6 +38,7 @@ public class ProyectoService {
         Proyecto proyecto = obtenerProyectoPorId(id);
         proyecto.setNombre(proyectoActualizado.getNombre());
         proyecto.setDescripcion(proyectoActualizado.getDescripcion());
+        proyecto.setFechaInicio(proyectoActualizado.getFechaInicio());
         proyecto.setEstado(proyectoActualizado.getEstado());
         proyectoRepository.save(proyecto);
     }
