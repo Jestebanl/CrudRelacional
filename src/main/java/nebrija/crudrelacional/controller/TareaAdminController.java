@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.*;
 public class TareaAdminController {
     private final TareaService tareaService;
 
-    public TareaAdminController(TareaService tareaService) { this.tareaService = tareaService; }
+    public TareaAdminController(TareaService tareaService) {
+        this.tareaService = tareaService;
+    }
 
-    @GetMapping("/tareas/crear")
+    @GetMapping("/crear")
     public String crearFormTarea(Model model) {
         model.addAttribute("tarea", new Tarea());
-        return "tareas/crear";
+        return "tarea/crear";
     }
 
     @PostMapping
@@ -25,23 +27,22 @@ public class TareaAdminController {
         return "redirect:/user/tareas";
     }
 
-    @GetMapping("/tareas/editar/{id}")
+    @GetMapping("/editar/{id}")
     public String editarFormTarea(@PathVariable Long id, Model model) {
         Tarea tarea = tareaService.obtenerTareaPorId(id);
-        model.addAttribute("tareas", tarea);
-        return "tareas/editar";
+        model.addAttribute("tarea", tarea);
+        return "tarea/editar";
     }
 
-    @PostMapping("/tareas/actualizar/{id}")
+    @PostMapping("/actualizar/{id}")
     public String actualizarTarea(@PathVariable Long id, @ModelAttribute Tarea tarea) {
         tareaService.modificarTarea(id, tarea);
         return "redirect:/user/tareas";
     }
 
-    @GetMapping("/tareas/eliminar/{id}")
+    @GetMapping("/eliminar/{id}")
     public String eliminarTarea(@PathVariable Long id) {
         tareaService.eliminarTarea(id);
         return "redirect:/user/tareas";
     }
-    
 }
