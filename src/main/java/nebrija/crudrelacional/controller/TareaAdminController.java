@@ -1,23 +1,37 @@
 package nebrija.crudrelacional.controller;
 
-import nebrija.crudrelacional.model.Tarea;
-import nebrija.crudrelacional.service.TareaService;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import nebrija.crudrelacional.model.Proyecto;
+import nebrija.crudrelacional.model.Tarea;
+import nebrija.crudrelacional.service.ProyectoService;
+import nebrija.crudrelacional.service.TareaService;
+
 
 @Controller
 @RequestMapping("/admin/tareas")
 public class TareaAdminController {
     private final TareaService tareaService;
+    private final ProyectoService proyectoService;
 
-    public TareaAdminController(TareaService tareaService) {
+    public TareaAdminController(TareaService tareaService, ProyectoService proyectoService) {
         this.tareaService = tareaService;
+        this.proyectoService = proyectoService;
     }
 
     @GetMapping("/crear")
     public String crearFormTarea(Model model) {
         model.addAttribute("tarea", new Tarea());
+        List<Proyecto> proyectos = proyectoService.listarProyectos();
+        model.addAttribute("proyectos", proyectos);
         return "tarea/crear";
     }
 
@@ -31,6 +45,8 @@ public class TareaAdminController {
     public String editarFormTarea(@PathVariable Long id, Model model) {
         Tarea tarea = tareaService.obtenerTareaPorId(id);
         model.addAttribute("tarea", tarea);
+        List<Proyecto> proyectos = proyectoService.listarProyectos();
+        model.addAttribute("proyectos", proyectos);
         return "tarea/editar";
     }
 
