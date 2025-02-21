@@ -15,11 +15,11 @@ public class UsuarioService {
     public List<Usuario> listarUsuarios() { return this.usuarioRepository.findAll(); }
 
     public Usuario obtenerUsuarioPorId(Long id) {
-        return usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrada"));
+        return usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 
     public Usuario obtenerUsuarioPorNombre(String nombre) {
-        return usuarioRepository.findByNombre(nombre).orElseThrow(() -> new RuntimeException("Usuario no encontrada"));
+        return usuarioRepository.findByNombre(nombre).orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 
     public void agregarUsuario(Usuario usuario) {
