@@ -18,6 +18,6 @@ public class ProyectoController {
     @GetMapping
     public String listar(Model model) {
         model.addAttribute("proyectos", proyectoService.listarProyectos());
-        return "proyectos/index";
+        return "proyecto/index";
     }
 }
