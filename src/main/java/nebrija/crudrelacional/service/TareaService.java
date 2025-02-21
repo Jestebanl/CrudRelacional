@@ -1,6 +1,5 @@
 package nebrija.crudrelacional.service;
 
-import nebrija.crudrelacional.model.Proyecto;
 import nebrija.crudrelacional.model.Tarea;
 import nebrija.crudrelacional.repository.TareaRepository;
 import org.springframework.stereotype.Service;
@@ -19,8 +18,8 @@ public class TareaService {
         return tareaRepository.findById(id).orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
     }
 
-    public Tarea obtenerTareaPorNombre(String nombre) {
-        return tareaRepository.findByNombre(nombre).orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
+    public Tarea obtenerTareaPorTitulo(String titulo) {
+        return tareaRepository.findByTitulo(titulo).orElseThrow(() -> new RuntimeException("Tarea no encontrada"));
     }
 
     public void agregarTarea(Tarea tarea) {
