@@ -1,7 +1,6 @@
 package nebrija.crudrelacional.model;
 
 import java.time.LocalDate;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -28,7 +27,7 @@ public class Proyecto {
     private LocalDate fechaInicio;
 
     @Enumerated(EnumType.STRING)    // Esto asegura que se guarden los nombres del enum como cadenas
-    @Column(name = "estado", nullable = false, columnDefinition = "ENUM('Activo', 'En Progreso', 'Finalizado')")
+    @Column(name = "estado", nullable = false, columnDefinition = "ENUM('Activo', 'En_Progreso', 'Finalizado')")
     private EstadoProyecto estado;
 
     public Proyecto() {

@@ -21,7 +21,7 @@ public class Tarea {
     private LocalDate fechaLimite;
 
     @Enumerated(EnumType.STRING)    // Esto asegura que se guarden los nombres del enum como cadenas
-    @Column(name = "estado", nullable = false, columnDefinition = "ENUM('Pendiente', 'En Curso', 'Completada')")
+    @Column(name = "estado", nullable = false, columnDefinition = "ENUM('Pendiente', 'En_Curso', 'Completada')")
     private EstadoTarea estado;
 
     @ManyToOne
