@@ -15,10 +15,10 @@ public class ProyectoAdminController {
         this.proyectoService = proyectoService;
     }
 
-    @GetMapping("/proyectos/crear")
+    @GetMapping("/crear")
     public String crearFormProyecto(Model model) {
         model.addAttribute("proyecto", new Proyecto());
-        return "proyectos/crear";
+        return "proyecto/crear";
     }
 
     @PostMapping
@@ -27,23 +27,22 @@ public class ProyectoAdminController {
         return "redirect:/user/proyectos";
     }
 
-    @GetMapping("/proyectos/editar/{id}")
+    @GetMapping("/editar/{id}")
     public String editarFormProyecto(@PathVariable Long id, Model model) {
         Proyecto proyecto = proyectoService.obtenerProyectoPorId(id);
-        model.addAttribute("proyectos", proyecto);
-        return "proyectos/editar";
+        model.addAttribute("proyecto", proyecto);
+        return "proyecto/editar";
     }
 
-    @PostMapping("/proyectos/actualizar/{id}")
+    @PostMapping("/actualizar/{id}")
     public String actualizarProyecto(@PathVariable Long id, @ModelAttribute Proyecto proyecto) {
         proyectoService.modificarProyecto(id, proyecto);
         return "redirect:/user/proyectos";
     }
 
-    @GetMapping("/proyectos/eliminar/{id}")
+    @GetMapping("/eliminar/{id}")
     public String eliminarProyecto(@PathVariable Long id) {
         proyectoService.eliminarProyecto(id);
         return "redirect:/user/proyectos";
     }
-
 }
