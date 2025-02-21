@@ -32,6 +32,10 @@ public class TareaService {
         tareaRepository.delete(tarea);
     }
 
+    public void eliminarTarea(Long id) {
+        tareaRepository.deleteById(id);
+    }
+
     public void modificarTarea(Long id, Tarea tareaActualizado) {
         Tarea tarea = obtenerTareaPorId(id);
         tarea.setTitulo(tareaActualizado.getTitulo());

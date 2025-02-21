@@ -30,6 +30,10 @@ public class ProyectoService {
         proyectoRepository.delete(proyecto);
     }
 
+    public void eliminarProyecto(Long id) {
+        proyectoRepository.deleteById(id);
+    }
+
     public void modificarProyecto(Long id, Proyecto proyectoActualizado) {
         Proyecto proyecto = obtenerProyectoPorId(id);
         proyecto.setNombre(proyectoActualizado.getNombre());
