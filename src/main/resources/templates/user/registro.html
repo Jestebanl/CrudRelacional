@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div class="d-flex justify-content-center bg-white shadow-sm">
+  <div sec:authorize="hasRole('Admin')" class="d-flex justify-content-center bg-white shadow-sm">
     <div th:replace="~{layout/navbar :: navbar}"></div>
   </div>
   <div class="container mt-4">
@@ -34,6 +34,8 @@
     </form>
 
     <a href="/home" sec:authorize="hasRole('Admin')" class="btn btn-primary mt-3">Volver al inicio</a>
+
+    <a href="/login" class="btn btn-secondary mt-3">Inicio de sesión</a>
   </div>
 </body>
 
